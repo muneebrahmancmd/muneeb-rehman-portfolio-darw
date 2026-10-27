@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muneeb Rehman - Creative Developer &amp; Designer - Pakistan</title>
+    <meta name="description"
+        content="Hi! I'm Muneeb, a creative developer, web and graphic designer based in Pakistan. I build fast, animated websites and explore AI cinematic video and images.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Muneeb Rehman - Creative Developer &amp; Designer">
+    <meta property="og:description"
+        content="Hi! I'm Muneeb, a creative developer, web and graphic designer based in Pakistan. I build fast, animated websites and explore AI cinematic video and images.">
+    <meta property="og:image" content="Img/og.jpg">
+
+    <!-- font preload: peso 400 e 700 usati nel preloader e nel corpo pagina -->
+    <link rel="preload" href="Font/Matahari/matahari_400_regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="Font/Matahari/matahari_700_bold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- style -->
+    <link rel="stylesheet" href="vendor/locomotive-scroll.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/fa/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="vendor/splitting.css">
+    <link rel="stylesheet" href="vendor/splitting-cells.css">
+
+    <!-- script -->
+    <script src="Script/theme.js"></script>
+    <script src="Script/preloader.js"></script>
+    <script src="Script/gsap.min.js"></script>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <!-- Applica il tema prima del primo paint per evitare flash e dare sfondo al preloader -->
+    <script>
+        (function () {
+            var saved = localStorage.getItem('themePreference');
+            var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-theme' : 'light-theme');
+            document.body.className = theme + ' is-loading';
+        })();
+    </script>
+    <button id="theme-toggle" aria-label="Toggle light/dark theme">
+        <span class="theme-icon" id="theme-icon" aria-hidden="true"></span>
+    </button>
+
+    <!-- noise -->
+    <div class="bg stop-flickering"></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="loader">
+            <div id="progress"></div>
+        </div>
+        <div id="percentage" class="big strong">0%</div>
+    </div>
+
+    <!-- Overlay blocca-scroll durante il preloader.
+         Usa position:fixed invece di body{overflow:hidden}: su Firefox,
+         overflow:hidden sul body altera le dimensioni che Locomotive usa
+         nelle formule parallax, causando translateY errati su tutti gli elementi. -->
+    <div id="scroll-blocker" style="position:fixed;inset:0;z-index:99;touch-action:none;"></div>
+
+    <!-- content -->
+    <div data-scroll-container class="smooth-scroll" id="page-content">
+
+        <!-- hero section -->
+        <section class="section hero" data-scroll-section>
+            <div class="hero-container titleAnimation" data-splitting>
+                <h1 class="title serif big" data-scroll>
+                    <span data-scroll="" data-scroll-delay="0.18" data-scroll-speed="7"
+                        data-scroll-position="center">M</span>
+                    <span data-scroll="" data-scroll-delay="0.14" data-scroll-speed="10">U</span>
+                    <span data-scroll="" data-scroll-delay="0.12" data-scroll-speed="4">N</span>
+                    <span data-scroll="" data-scroll-delay="0.1" data-scroll-speed="7">E</span>
+                    <span data-scroll="" data-scroll-delay="0.08" data-scroll-speed="12">E</span>
+                    <span data-scroll="" data-scroll-delay="0.12" data-scroll-speed="5">B</span>
+                </h1>
+                <p class="big" data-scroll data-scroll-speed="4" data-scroll-direction="horizontal">
+                    <span>who</span>
+                    <span>I am</span>
+                    <span>and what</span>
+                    <span>I do.</span>
+                </p>
+                <p class="designer forced" data-scroll data-scroll-speed="10">
+                    <span>creative developer</span>
+                    <span>&amp; designer</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Me -->
+        <section class="section me" data-scroll-section>
+            <div class="row d-flex fluid-container">
+                <div class="col-12 col-md-3 col-lg-5 col-xl-7 mb-5 mb-md-0">
+                    <div class="image-container" data-no-retina="" >
+                        <img class="portrait img-fluid lazyloaded" src="Img/portrait.jpg" alt="Muneeb Rehman monogram"
+                            data-no-retina=""
+                            loading="lazy">
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 col-lg-7 col-xl-5">
+                    <p>
+                        <span class="about-start">I</span>'m Muneeb, a computer science student who builds websites, designs graphics and explores AI every day.
+                    </p>
+                    <p>
+                        Based in Pakistan, working online, and always on new creative adventures.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+<!-- Experiences and education -->
+        <section class="section" data-scroll-section style="padding-bottom: 0;">
+            <div class="row d-flex fluid-container exp-edu">
+                <div class="col-12 mb-5">
+                    <h3 class="serif">
+                        What I do
+                    </h3>
+                    <div>
+<div class="nav-wrap">
+<nav class="acnav" role="navigation">
+<ul class="acnav__list acnav__list--level1">
+<li class="has-children">
+<div class="acnav__label">
+<div class="arrow-box">
+<div class="arrow-content">
+↘
+</div>
+</div>
+<h5 class="acnav_title">Web Design &amp; Development</h5>
+</div>
+<div class="separator">
+</div>
+<div class="acnav__list acnav__list--level2">
+<div class="content">
+<h5 class="period">Skill · <span class="now">Now</span></h5>
+<h6 class="strong">What it is</h6>
+<p>I design and code fast, animated and memorable websites, from portfolios to full-stack apps.</p>
+<h6 class="strong">What I do</h6>
+<ul>
+<li>Designing clean, responsive layouts with strong typography and motion.</li>
+<li>Building them with HTML, CSS, JavaScript and modern frameworks such as Next.js.</li>
+<li>Shipping and hosting live projects on Netlify and Vercel (see the live projects below).</li>
+</ul>
+</div>
+<div class="animlist separator"></div>
+</div>
+</li>
+<li class="has-children">
+<div class="acnav__label">
+<div class="arrow-box">
+<div class="arrow-content">
+↘
+</div>
+</div>
+<h5 class="acnav_title">Graphic Design &amp; Photo Editing</h5>
+</div>
+<div class="separator">
+</div>
+<div class="acnav__list acnav__list--level2">
+<div class="content">
+<h5 class="period">Skill · <span class="now">Now</span></h5>
+<h6 class="strong">What it is</h6>
+<p>Visuals, graphics and photo edits with a clean, bold eye for detail and color.</p>
+<h6 class="strong">What I do</h6>
+<ul>
+<li>Graphic design for web and social.</li>
+<li>Photo editing and retouching.</li>
+<li>Turning ideas into clear, good-looking visuals.</li>
+</ul>
+</div>
+<div class="animlist separator"></div>
+</div>
+</li>
+<li class="has-children">
+<div class="acnav__label">
+<div class="arrow-box">
+<div class="arrow-content">
+↘
+</div>
+</div>
+<h5 class="acnav_title">AI Cinematic Creation</h5>
+</div>
+<div class="separator">
+</div>
+<div class="acnav__list acnav__list--level2">
+<div class="content">
+<h5 class="period">Interest · <span class="now">Now</span></h5>
+<h6 class="strong">What it is</h6>
+<p>Lately I am deep into AI-generated cinematic video and images.</p>
+<h6 class="strong">What I do</h6>
+<ul>
+<li>Exploring tools like Veo 3, Midjourney, Flux and Imagen.</li>
+<li>Building cinematic scenes and concept art from prompts.</li>
+<li>Mixing AI visuals into web and graphic projects.</li>
+</ul>
+</div>
+<div class="animlist separator"></div>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+
+                </div>
+                <div class="col-12">
+                    <h3 class="serif">
+                        Study
+                    </h3>
+                    <div>
+<div class="nav-wrap">
+<nav class="acnav" role="navigation">
+<ul class="acnav__list acnav__list--level1">
+<li class="has-children">
+<div class="acnav__label">
+<div class="arrow-box">
+<div class="arrow-content">
+↘
+</div>
+</div>
+<h5 class="acnav_title">Computer Science student</h5>
+</div>
+<div class="separator">
+</div>
+<div class="acnav__list acnav__list--level2">
+<div class="content">
+<h5 class="period">Study · <span class="now">Now</span></h5>
+<h6 class="strong">What it is</h6>
+<p>Studying computer science, which is the technical base behind everything I build.</p>
+<h6 class="strong">What I do</h6>
+<ul>
+<li>Programming and problem solving.</li>
+<li>Web technologies, from front end to back end.</li>
+<li>Always learning by building real projects.</li>
+</ul>
+</div>
+<div class="animlist separator"></div>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+
+                </div>
+            </div>
+        </section>
+
+<section class="section now" data-scroll-section>
+            <div class="row d-flex fluid-container pb-4">
+                <h1 id="lastdance" class="serif big" style="text-align: center;" data-scroll data-scroll-speed="-10">
+                    Live projects
+                </h1>
+            </div>
+        </section>
+        <!-- Horizonal projects -->
+        <section class="horizontalScrolling skill" data-scroll-section>
+            <div class="section-inner" data-scroll data-scroll-speed="0" data-scroll-direction="horizontal">
+                <div data-scroll-in-section>
+                    <div class="item txt" data-scroll data-scroll-speed="0">
+                        <div class="content">
+                            <p class="small text-uppercase">Newest</p>
+                            <h2 class="serif text-uppercase">
+                                Live <br>portfolios
+                            </h2>
+                            <p>Nine live websites I designed and built. Each tile shows the real site, and a click opens it.</p>
+                        </div>
+                    </div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muneeb-rehman-40.vercel.app/" aria-hidden="true"><iframe title="Portfolio 40 live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muneeb-rehman-40.vercel.app/" target="_blank" rel="noopener">Portfolio 40 · Vercel, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muneeb-rehman-portfolio-30.vercel.app/" aria-hidden="true"><iframe title="Portfolio 30 live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muneeb-rehman-portfolio-30.vercel.app/" target="_blank" rel="noopener">Portfolio 30 · Vercel, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muneeb-rehman-portfolio-20.vercel.app/" aria-hidden="true"><iframe title="Portfolio 20 live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muneeb-rehman-portfolio-20.vercel.app/" target="_blank" rel="noopener">Portfolio 20 · Vercel, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muneeb-portfolio-2026.netlify.app/" aria-hidden="true"><iframe title="Portfolio 2026 live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muneeb-portfolio-2026.netlify.app/" target="_blank" rel="noopener">Portfolio 2026 · Netlify, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muna-portfolio-2k26.netlify.app/" aria-hidden="true"><iframe title="Muna Portfolio live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muna-portfolio-2k26.netlify.app/" target="_blank" rel="noopener">Muna Portfolio · Netlify, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muna-portfolio-2k26.vercel.app/" aria-hidden="true"><iframe title="Muna Portfolio, Editorial live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muna-portfolio-2k26.vercel.app/" target="_blank" rel="noopener">Muna Portfolio, Editorial · Vercel, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muneeb-dev.netlify.app/" aria-hidden="true"><iframe title="Muneeb Dev live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muneeb-dev.netlify.app/" target="_blank" rel="noopener">Muneeb Dev · Netlify, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muneeb-dev-portfolio.netlify.app/" aria-hidden="true"><iframe title="Dev Portfolio live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muneeb-dev-portfolio.netlify.app/" target="_blank" rel="noopener">Dev Portfolio · Netlify, open</a>
+</div>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<div class="image-link">
+<div class="live-frame" data-src="https://muneeb-port-folio.netlify.app/" aria-hidden="true"><iframe title="MR Portfolio live preview" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe></div>
+<a class="small" href="https://muneeb-port-folio.netlify.app/" target="_blank" rel="noopener">MR Portfolio · Netlify, open</a>
+</div>
+</div>
+
+                    <div class="item txt" data-scroll data-scroll-speed="0">
+                        <div class="content">
+                            <p class="small text-uppercase">More</p>
+                            <h2 class="serif text-uppercase">
+                                Other <br>projects
+                            </h2>
+                            <p>More things I built: name and link.</p>
+                        </div>
+                    </div>
+<div class="item" data-scroll data-scroll-speed="0">
+<a class="more-card" href="https://muna-movie.netlify.app/" target="_blank" rel="noopener">
+<span class="serif more-name">Muna Movie</span>
+<span class="small more-desc">CineSearch, movies and TV discovery</span>
+<span class="small more-go">Open ↗</span>
+</a>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<a class="more-card" href="https://muna-voices.netlify.app/" target="_blank" rel="noopener">
+<span class="serif more-name">Muna Voices</span>
+<span class="small more-desc">SpeechSter, ultra-fast text to speech</span>
+<span class="small more-go">Open ↗</span>
+</a>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<a class="more-card" href="https://muna-dev2.netlify.app/" target="_blank" rel="noopener">
+<span class="serif more-name">Muna Dev</span>
+<span class="small more-desc">Full-stack portfolio, services and process</span>
+<span class="small more-go">Open ↗</span>
+</a>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<a class="more-card" href="https://muneeb-portfolio-1.netlify.app/" target="_blank" rel="noopener">
+<span class="serif more-name">Portfolio 1</span>
+<span class="small more-desc">Rubik's Cube themed portfolio</span>
+<span class="small more-go">Open ↗</span>
+</a>
+</div>
+<div class="item" data-scroll data-scroll-speed="0">
+<a class="more-card" href="https://muneeb-portfoli0.netlify.app/" target="_blank" rel="noopener">
+<span class="serif more-name">Portfolio 3.0</span>
+<span class="small more-desc">Typographic portfolio, roles marquee</span>
+<span class="small more-go">Open ↗</span>
+</a>
+</div>
+
+                    <div class="item txt" data-scroll data-scroll-speed="0">
+                        <div class="content">
+                            <p class="small text-uppercase">Code</p>
+                            <h2 class="serif text-uppercase">
+                                More on <br>GitHub
+                            </h2>
+                            <p>Code and experiments live on <a href="https://github.com/muneebrahmancmd" target="_blank" rel="noopener">my GitHub</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Plus -->
+        <section class="section fav-tools" data-scroll-section>
+            <div class="row d-flex fluid-container">
+                <h3 class="serif" data-scroll data-scroll-speed="-2" data-scroll-direction="horizontal">
+                    AI tools I explore
+                </h3>
+                <div class="col-12">
+                    <ul>
+<li>
+<div class="logo">
+<img src="Img/Logo/tool-0.png" alt="" width="96" height="96">
+</div>
+<div>
+Veo 3
+<p class="small">For AI cinematic video.</p>
+</div>
+</li>
+<li>
+<div class="logo">
+<img src="Img/Logo/tool-1.png" alt="" width="96" height="96">
+</div>
+<div>
+Midjourney
+<p class="small">For imaginative AI images.</p>
+</div>
+</li>
+<li>
+<div class="logo">
+<img src="Img/Logo/tool-2.png" alt="" width="96" height="96">
+</div>
+<div>
+Flux
+<p class="small">For fast, detailed image generation.</p>
+</div>
+</li>
+<li>
+<div class="logo">
+<img src="Img/Logo/tool-3.png" alt="" width="96" height="96">
+</div>
+<div>
+Imagen
+<p class="small">For clean, realistic AI images.</p>
+</div>
+</li>
+</ul>
+                </div>
+            </div>
+        </section>
+
+<!-- Thx and contacts-->
+        <section class="section hero thanks d-flex" data-scroll-section>
+            <div class="hero-container titleAnimation">
+                <!-- thank you -->
+                <h1 class="title serif big" data-scroll>
+                    <span data-scroll="" data-scroll-delay="0.18" data-scroll-speed="7"
+                        data-scroll-position="center">T</span>
+                    <span data-scroll="" data-scroll-delay="0.14" data-scroll-speed="10">H</span>
+                    <span data-scroll="" data-scroll-delay="0.12" data-scroll-speed="4">A</span>
+                    <span data-scroll="" data-scroll-delay="0.1" data-scroll-speed="7">N</span>
+                    <span data-scroll="" data-scroll-delay="0.08" data-scroll-speed="12">K</span>
+                    <span class="d-none d-md-block" data-scroll="" data-scroll-delay="0.12"
+                        data-scroll-speed="5"></span>
+                    <span class="d-none d-md-block" data-scroll="" data-scroll-delay="0.18" data-scroll-speed="7"
+                        data-scroll-position="center">Y</span>
+                    <span class="d-none d-md-block" data-scroll="" data-scroll-delay="0.14"
+                        data-scroll-speed="10">O</span>
+                    <span class="d-none d-md-block" data-scroll="" data-scroll-delay="0.12"
+                        data-scroll-speed="4">U</span>
+                    <span class="d-block d-md-none" data-scroll="" data-scroll-delay="0.12"
+                        data-scroll-speed="4">S</span>
+                </h1>
+            </div>
+            <div class="fluid-container min">
+                <!-- contact me -->
+                <p class="contact-info text-center mt-2 mt-xl-3" data-scroll data-scroll-speed="4">
+                    If you want to contact me, you can write a mail to <span class="obf-email" data-a="muneebrahman500" data-b="gmail.com"></span>
+                    or find me on <a href="https://www.linkedin.com/in/muneeb-soomro-887925333" target="_blank" rel="noopener"><strong>LinkedIn</strong></a>
+                </p>
+                <!-- social -->
+                <div class="d-flex" data-scroll data-scroll-speed="4">
+                    <div class="social-icons">
+<a href="https://www.linkedin.com/in/muneeb-soomro-887925333" class="social-icon" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)">
+<i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+</a>
+<a href="https://github.com/muneebrahmancmd" class="social-icon" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)">
+<i class="fa-brands fa-github" aria-hidden="true"></i>
+</a>
+<a href="https://twitter.com/Muneeb455365487" class="social-icon" target="_blank" rel="noopener" aria-label="Twitter (opens in a new tab)">
+<i class="fa-brands fa-twitter" aria-hidden="true"></i>
+</a>
+<a href="https://www.instagram.com/he__muneeb/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)">
+<i class="fa-brands fa-instagram" aria-hidden="true"></i>
+</a>
+</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- footer with links -->
+        <footer id="colophon" class="site-footer" data-scroll-section>
+            <div class="footerContent fluid-container" data-scroll data-scroll-direction="vertical"
+                data-scroll-speed="-4" data-scroll-target="#colophon" data-scroll-position="bottom">
+                <p id="year">
+                    © 2026 Muneeb Rehman
+                    <span id="lastModified" class="d-none d-md-inline xsmall"> </span>
+                    — Pakistan
+                </p>
+                <div class="d-flex">
+                    <p class="xsmall">
+                        Layout adapted from <a href="https://github.com/darw5n/me" target="_blank" rel="noopener">darw5n/me</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- end content -->
+
+    <!-- script -->
+    <script src="Script/locomotive-scroll.min.js"></script>
+    <script src="Script/ScrollTrigger.min.js"></script>
+    <script src="Script/splitting.min.js"></script>
+    <script src="Script/email.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var lastModified = new Date(document.lastModified);
+            var day = lastModified.getDate();
+            var month = lastModified.toLocaleString('default', { month: 'short' });
+            var year = lastModified.getFullYear().toString().slice(-2);
+            document.getElementById("lastModified").innerText = `(Last edit: ${day} ${month} ${year}) `;
+        });
+    </script>
+    <script src="Script/Accordion.js"></script>
+    <script src="Script/live.js"></script>
+
+    <script>
+
+        /* --- Splitting.js: crea gli span .char prima di tutto il resto --- */
+        Splitting();
+
+        /* --- Scroll animations with Locomotive Scroll & GSAP --- */
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Firefox mobile: Locomotive smooth scroll non funziona su Gecko mobile —
+        // usa native scroll come fallback per garantire layout corretto su Firefox.
+        const isFirefox = /firefox/i.test(navigator.userAgent);
+        const isMobileViewport = window.matchMedia("(max-width: 767px)").matches;
+        const useSmoothMobile = !(isFirefox && isMobileViewport);
+
+        // Fix mobile: nella sezione thanks, a fine pagina il parallax ha accumulato
+        // spostamenti grandi (K speed=12 → -164px, S speed=4 → -61px → spread 103px).
+        // Su mobile zerare i speed e affidarsi solo al CSS staircase (×0.73 ereditato
+        // da .hero h1 span) produce un'onda statica corretta, simile al desktop.
+        if (isMobileViewport) {
+            document.querySelectorAll(".thanks h1.title > span[data-scroll-speed]").forEach(function (el) {
+                el.setAttribute("data-scroll-speed", "0");
+            });
+        }
+
+        const locoScroll = new LocomotiveScroll({
+            el: document.querySelector(".smooth-scroll"),
+            smooth: useSmoothMobile,
+            lerp: 0.05,
+            multiplier: 1,
+            reloadOnContextChange: true,
+            touchMultiplier: 2,
+            smartphone: {
+                smooth: useSmoothMobile,
+                breakpoint: 767
+            },
+            tablet: {
+                smooth: useSmoothMobile,
+                breakpoint: 1024
+            },
+        });
+
+        // Rende accessibile lo stato smooth al preloader (definito in <head>)
+        window._locomotiveSmoothActive = useSmoothMobile;
+
+        // Fix mobile: window.innerHeight al momento dell'init di Locomotive è sbagliato —
+        // Firefox responsive mode non ha ancora applicato le dimensioni simulate (stesso bug
+        // di window.innerWidth). Locomotive calcola windowMiddle.y = innerHeight/2 sbagliato
+        // (es. 1594 invece di 398), causando transform enormi su tutti gli elementi con speed.
+        // Su window.load le dimensioni sono corrette: locoScroll.resize() le rilegge e
+        // ricalcola windowMiddle e le posizioni di tutti gli elementi.
+        // Il contenuto è ancora nascosto dal preloader, quindi l'utente non vede lo stato errato.
+        if (isMobileViewport) {
+            window.addEventListener('load', function () {
+                locoScroll.scroll.resize();
+            }, { once: true });
+        }
+
+        // Blocca lo scroll virtuale solo in smooth mode — in native scroll (Firefox mobile)
+        // è sufficiente body.is-loading { overflow: hidden } già applicato via CSS.
+        // locoScroll.stop() in native mode lascia il container in stato anomalo
+        // causando opacity: 0 permanente su #page-content dopo il preloader.
+        if (document.body.classList.contains('is-loading') && useSmoothMobile) {
+            locoScroll.stop();
+        }
+
+        locoScroll.on("scroll", ScrollTrigger.update);
+
+        // pinType: 'transform' se Locomotive usa virtual scroll, 'fixed' se native scroll
+        const scrollerPinType = useSmoothMobile ? "transform" : "fixed";
+
+        ScrollTrigger.scrollerProxy(".smooth-scroll", {
+            scrollTop(value) {
+                if (arguments.length) {
+                    return locoScroll.scrollTo(value, 0, 0);
+                }
+                // Fallback sicuro: se scroll.instance non è disponibile (native scroll),
+                // legge direttamente window.scrollY
+                return locoScroll.scroll && locoScroll.scroll.instance
+                    ? locoScroll.scroll.instance.scroll.y
+                    : window.scrollY;
+            },
+            getBoundingClientRect() {
+                return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+            },
+            pinType: scrollerPinType
+        });
+
+        const section = document.querySelector('.horizontalScrolling');
+
+        if (section) {
+            const inner = section.querySelector('.section-inner');
+            const scroll = section.querySelector('[data-scroll-in-section]');
+
+            if (inner && scroll) {
+                // I margini sono simmetrici (margin-left: 101vw, margin-right: 101vw).
+                // La formula deve includere ENTRAMBI: il sinistro porta gli items nel
+                // viewport, il destro li porta fuori. Senza margin-right il totalScrollable
+                // è ~1630px troppo corto e l'ultimo item appare solo all'ultimo frame.
+                const getTotalScrollable = () => scroll.offsetLeft * 2 + scroll.scrollWidth - document.documentElement.clientWidth;
+                const getTotalHeight = () => getTotalScrollable() + window.innerHeight;
+
+                // L'altezza della sezione va impostata manualmente: Locomotive la usa
+                // per calcolare lo spazio di scroll virtuale.
+                const updateHeight = () => {
+                    section.style.height = `${getTotalHeight()}px`;
+                };
+                updateHeight();
+
+                // Pin e animazione x gestiti tramite eventi Locomotive — nessun
+                // ScrollTrigger per questa sezione. Vantaggio: section.offsetTop è
+                // un valore live, si aggiorna automaticamente dopo ogni accordion
+                // senza bisogno di ScrollTrigger.refresh().
+                locoScroll.on('scroll', ({ scroll: s }) => {
+                    const sectionTop = section.offsetTop;
+                    const totalScrollable = getTotalScrollable();
+                    const progress = Math.min(Math.max((s.y - sectionTop) / totalScrollable, 0), 1);
+
+                    // Pin: compensa il movimento del container per tenere inner fermo
+                    gsap.set(inner, { y: progress * totalScrollable });
+                    // Scroll orizzontale
+                    gsap.set(scroll, { x: -progress * totalScrollable });
+                });
+
+                window._updateHorizontalHeight = updateHeight;
+            }
+        }
+
+        // updateHeight va chiamata PRIMA di locoScroll.update() ad ogni refresh:
+        // font custom e immagini caricano in modo asincrono dopo l'init, cambiando
+        // scroll.scrollWidth e quindi totalScrollable. Se l'altezza della sezione
+        // non viene ricalcolata, Locomotive esce dalla sezione troppo presto.
+        // Fix mobile: dopo ScrollTrigger.refresh() la sezione orizzontale ha
+        // l'altezza definitiva, ma Locomotive non aggiorna limit.y. La sezione
+        // .thanks (top ~10473px) risulta irraggiungibile. Forziamo il valore corretto.
+        const fixLocoLimit = () => {
+            if (!locoScroll.scroll || !locoScroll.scroll.instance) return;
+            const correct = document.documentElement.scrollHeight - window.innerHeight;
+            if (locoScroll.scroll.instance.limit.y < correct) {
+                locoScroll.scroll.instance.limit.y = correct;
+            }
+        };
+
+        ScrollTrigger.addEventListener("refresh", () => {
+            if (window._updateHorizontalHeight) window._updateHorizontalHeight();
+            locoScroll.update();
+            fixLocoLimit();
+        });
+        ScrollTrigger.refresh();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // ScrollTrigger.refresh() triggera il listener sopra che fa
+                // updateHeight() + locoScroll.update() nell'ordine corretto
+                ScrollTrigger.refresh();
+            }, 250);
+        });
+
+        // Segnala al preloader che Locomotive e ScrollTrigger sono pronti.
+        // Su Android Firefox con CDN lenti, window.load può precedere questo punto —
+        // il preloader aspetta entrambi prima di completare.
+        window.dispatchEvent(new Event('pageReady'));
+
+    </script>
+</body>
+
+</html>
